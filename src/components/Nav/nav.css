@@ -1,3 +1,4 @@
-.link-style:hover {
+.active {
+    color: rgb(45, 231, 45) !important;
     text-decoration: underline !important;
 }
