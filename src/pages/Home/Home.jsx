@@ -1,9 +1,10 @@
+import Navbar from "../../components/Nav/Nav"
 
 
 const Home = () => {
-    return (
-        <div>Home</div>
-    )
+    return <section>
+        <Navbar />
+    </section>
 }
 
 export default Home
