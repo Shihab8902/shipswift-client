@@ -11,6 +11,8 @@ import { useForm } from 'react-hook-form';
 import { UserContext } from '../../context/AuthProvider';
 import Swal from 'sweetalert2';
 
+import useAxiosPublic from '../../hooks/axios/useAxiosPublic';
+
 
 
 const Login = () => {
@@ -19,8 +21,9 @@ const Login = () => {
 
     const { register, handleSubmit, formState: { errors } } = useForm();
 
-    const { loginUser } = useContext(UserContext);
+    const { loginUser, signInWithGoogle } = useContext(UserContext);
 
+    const axiosPublic = useAxiosPublic();
 
 
     const onSubmit = (data) => {
@@ -33,7 +36,7 @@ const Login = () => {
                     showConfirmButton: false,
                     timer: 1500
                 });
-                navigate("/")
+                navigate("/");
             })
             .catch(error => {
                 Swal.fire({
@@ -44,6 +47,44 @@ const Login = () => {
             });
     }
 
+
+
+    const handleGoogleSignIn = () => {
+        signInWithGoogle()
+            .then(result => {
+                if (result.user) {
+
+                    const user = {
+                        name: result.user.displayName,
+                        email: result.user.email,
+                        role: "user",
+                        image: result.user.photoURL
+                    };
+
+                    axiosPublic.post("/users", user)
+                        .then(() => {
+
+                            Swal.fire({
+                                position: "center",
+                                icon: "success",
+                                text: "Your account has been registered successfully!",
+                                showConfirmButton: false,
+                                timer: 1500
+                            });
+                            navigate("/");
+                        })
+
+
+                }
+            })
+            .catch(error => {
+                Swal.fire({
+                    title: "Error!",
+                    text: error.message,
+                    icon: "error"
+                })
+            })
+    }
 
 
 
@@ -100,7 +141,7 @@ const Login = () => {
                 <hr className='border-black ' />
 
                 <div className='flex justify-center mt-5'>
-                    <button className='flex items-center font-semibold gap-1 border bg-gray-200 rounded-lg py-2 px-3'><FcGoogle className='text-lg' /> Continue with Google</button>
+                    <button onClick={handleGoogleSignIn} className='flex items-center font-semibold gap-1 border bg-gray-200 rounded-lg py-2 px-3'><FcGoogle className='text-lg' /> Continue with Google</button>
                 </div>
 
                 <p className='mt-5 text-center font-semibold text-sm'>Don't have an account? <Link state={location.state} to="/register" className='text-green-700 hover:underline'>Register</Link></p>

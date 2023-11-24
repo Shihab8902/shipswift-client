@@ -13,7 +13,7 @@ import { UserContext } from '../../context/AuthProvider';
 import Swal from 'sweetalert2';
 import useAxiosPublic from '../../hooks/axios/useAxiosPublic';
 import { updateProfile } from 'firebase/auth';
-import useAxiosSecure from '../../hooks/axios/useAxiosSecure';
+
 
 
 const Register = () => {
@@ -24,13 +24,11 @@ const Register = () => {
 
     const { createUser } = useContext(UserContext);
     const axiosPublic = useAxiosPublic();
-    const axiosSecure = useAxiosSecure();
 
-
-
-
+    const [isRegistering, setIsRegistering] = useState(false);
 
     const onSubmit = (data) => {
+        setIsRegistering(true);
         createUser(data?.email, data?.password)
             .then(async (res) => {
                 if (res.user) {
@@ -59,7 +57,7 @@ const Register = () => {
                                     image: photoURL
                                 };
 
-                                axiosSecure.post("/users", user)
+                                axiosPublic.post("/users", user)
                                     .then(() => {
 
                                         Swal.fire({
@@ -70,6 +68,7 @@ const Register = () => {
                                             timer: 1500
                                         });
                                         navigate("/");
+                                        setIsRegistering(false);
                                     })
 
                             })
@@ -82,8 +81,10 @@ const Register = () => {
                     title: "Error",
                     text: error.message,
                     icon: "error"
-                });
+                })
+                setIsRegistering(false);
             })
+
     };
 
 
@@ -151,7 +152,7 @@ const Register = () => {
                     </div>
 
                     <div className='my-5'>
-                        <input className='bg-green-500 w-full py-3 cursor-pointer text-white font-semibold rounded-lg' type="submit" value="Register" />
+                        <input disabled={isRegistering} className='bg-green-500  w-full py-3 cursor-pointer text-white  font-semibold rounded-lg' type="submit" value={isRegistering ? "Registering...." : "Register"} />
                     </div>
                 </form>
 
