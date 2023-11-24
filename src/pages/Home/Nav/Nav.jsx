@@ -1,9 +1,10 @@
 import React, { useContext, useEffect, useState } from 'react'
 import './nav.css'
-import { NavLink } from 'react-router-dom'
+import { NavLink, Link } from 'react-router-dom'
 import { GiHamburgerMenu } from 'react-icons/gi';
 import { AiOutlineClose } from 'react-icons/ai';
-
+import { BiSolidUserPlus } from 'react-icons/bi';
+import { IoIosNotifications } from "react-icons/io";
 import logo from '../../../assets/images/logo.png';
 
 
@@ -41,7 +42,7 @@ const Nav = () => {
 
 
 
-
+    const user = false;
 
 
 
@@ -50,8 +51,8 @@ const Nav = () => {
 
         <div className='container mx-auto flex justify-between items-center'>
             <div className='flex items-center gap-1'>
-                <img className='w-[50px]' src={logo} alt="" />
-                <p className={`text-2xl font-semibold`}>ShipSwift</p>
+                <img className='w-[30px] md:w-[50px]' src={logo} alt="" />
+                <p className={`text-lg md:text-2xl font-semibold`}>ShipSwift</p>
             </div>
 
             <div className='hidden lg:block'>
@@ -59,12 +60,12 @@ const Nav = () => {
                     {navLinks}
 
 
-                    {/* {
+                    {
                         user ? <>
                             <label tabIndex={0} className="btn btn-ghost btn-circle">
-                                <div onClick={() => navigate("/dashboard/cart", { replace: true })} className="indicator ">
-                                    <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" /></svg>
-                                    <span className="badge badge-sm indicator-item">{item.length}</span>
+                                <div className="indicator ">
+                                    <IoIosNotifications className='text-3xl' />
+                                    <span className="badge badge-sm indicator-item">{0}</span>
                                 </div>
                             </label>
 
@@ -76,15 +77,15 @@ const Nav = () => {
                                 </label>
                                 <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
                                     <li className='font-bold text-center'>{user?.displayName || "User"}</li>
-                                    <li className='font-bold text-center lowercase my-3'>{user?.email || "Unknown"}</li>
-                                    <button onClick={handleLogOut} className='btn bg-red-600 text-white hover:text-black'>Log out</button>
+                                    <Link className='font-semibold text-blue-600 hover:underline text-center  my-3' to="/dashboard">Dashboard</Link>
+                                    <button className='btn bg-red-600 text-white hover:text-black'>Log out</button>
 
                                 </ul>
                             </div>
                         </> : <div>
                             <Link title="login" className='font-bold text-3xl' to="/login"> <BiSolidUserPlus /></Link>
                         </div>
-                    } */}
+                    }
 
 
 
@@ -93,15 +94,15 @@ const Nav = () => {
                 </ul>
             </div>
 
-            <div className=' lg:hidden text-3xl flex items-center gap-2 '>
+            <div className=' lg:hidden text-3xl flex items-center  gap-2 '>
 
-                {/* {
+                {
                     user ? <>
                         <label tabIndex={0} className="btn btn-ghost btn-circle">
 
 
-                            <div onClick={() => navigate("/dashboard/cart", { replace: true })} className="indicator ">
-                                <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" /></svg>
+                            <div className="indicator ">
+                                <IoIosNotifications className='text-3xl' />
                                 <span className="badge badge-sm indicator-item">1</span>
                             </div>
                         </label>
@@ -114,17 +115,17 @@ const Nav = () => {
                             </label>
                             <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
                                 <li className='font-bold text-center'>{user?.displayName || "User"}</li>
-                                <li className='font-bold text-center lowercase my-3'>{user?.email || "Unknown"}</li>
-                                <button onClick={handleLogOut} className='btn bg-red-600 text-white hover:text-black'>Log out</button>
+                                <Link className='font-semibold text-blue-600 hover:underline text-center  my-3' to="/dashboard">Dashboard</Link>
+                                <button className='btn bg-red-600 text-white hover:text-black'>Log out</button>
 
                             </ul>
                         </div>
                     </> : <div>
-                        <Link title="login" className='font-bold text-3xl mr-3' to="/login"> <BiSolidUserPlus /></Link>
+                        <Link title="login" className='font-bold text-3xl flex items-center mr-3' to="/login"> <BiSolidUserPlus /></Link>
                     </div>
-                } */}
+                }
 
-                <button onClick={() => setIsMenuVisible(!isMenuVisible)} className='cursor-pointer text-3xl '>
+                <button onClick={() => setIsMenuVisible(!isMenuVisible)} className='cursor-pointer text-3xl  '>
 
                     {
                         isMenuVisible ? <AiOutlineClose /> : <GiHamburgerMenu />

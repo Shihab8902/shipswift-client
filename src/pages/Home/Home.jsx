@@ -1,7 +1,7 @@
-
 import Banner from "./Banner/Banner"
 import Features from "./Features/Features"
 import Nav from "./Nav/Nav"
+import SiteStats from "./Site stats/SiteStats"
 
 
 
@@ -11,6 +11,7 @@ const Home = () => {
         <Nav />
         <Banner />
         <Features />
+        <SiteStats />
 
 
     </section>
