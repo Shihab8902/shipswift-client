@@ -1,4 +1,4 @@
-import bg from "../../assets/images/banner.jpg"
+import bg from '../../../assets/images/banner.jpg';
 
 const Banner = () => {
     return <div className="hero min-h-screen bg-center bg-cover" style={{ backgroundImage: `url(${bg})` }}>

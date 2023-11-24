@@ -4,7 +4,7 @@ import { NavLink } from 'react-router-dom'
 import { GiHamburgerMenu } from 'react-icons/gi';
 import { AiOutlineClose } from 'react-icons/ai';
 
-import logo from '../../assets/images/logo.png';
+import logo from '../../../assets/images/logo.png';
 
 
 

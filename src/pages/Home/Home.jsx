@@ -1,11 +1,16 @@
-import Banner from "../../components/Banner/Banner"
-import Navbar from "../../components/Nav/Nav"
+
+import Banner from "./Banner/Banner"
+import Features from "./Features/Features"
+import Nav from "./Nav/Nav"
+
+
 
 
 const Home = () => {
     return <section>
-        <Navbar />
+        <Nav />
         <Banner />
+        <Features />
 
 
     </section>
