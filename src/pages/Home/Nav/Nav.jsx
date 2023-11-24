@@ -1,22 +1,26 @@
-import React, { useContext, useEffect, useState } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import './nav.css'
-import { NavLink, Link } from 'react-router-dom'
+import { NavLink, Link, useNavigate } from 'react-router-dom'
 import { GiHamburgerMenu } from 'react-icons/gi';
 import { AiOutlineClose } from 'react-icons/ai';
 import { BiSolidUserPlus } from 'react-icons/bi';
 import { IoIosNotifications } from "react-icons/io";
 import logo from '../../../assets/images/logo.png';
+import { UserContext } from '../../../context/AuthProvider';
+import Swal from 'sweetalert2';
 
 
 
 
 
 const Nav = () => {
-
+    const navigate = useNavigate();
 
 
     const [isMenuVisible, setIsMenuVisible] = useState(false);
     const [isScrolled, setIsScrolled] = useState(false);
+
+    const { user, logOutUser } = useContext(UserContext);
 
 
 
@@ -42,7 +46,34 @@ const Nav = () => {
 
 
 
-    const user = false;
+    const handleLogOut = () => {
+        Swal.fire({
+            title: "Log out?",
+            text: "Are you sure want to log out?",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Confirm"
+        }).then((result) => {
+            if (result.isConfirmed) {
+
+                logOutUser()
+                    .then(() => {
+                        navigate("/");
+                        Swal.fire({
+                            position: "center",
+                            icon: "success",
+                            title: "Logged out successfully!",
+                            showConfirmButton: false,
+                            timer: 1500
+                        });
+                    });
+
+            }
+        });
+    }
+
 
 
 
@@ -78,7 +109,7 @@ const Nav = () => {
                                 <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
                                     <li className='font-bold text-center'>{user?.displayName || "User"}</li>
                                     <Link className='font-semibold text-blue-600 hover:underline text-center  my-3' to="/dashboard">Dashboard</Link>
-                                    <button className='btn bg-red-600 text-white hover:text-black'>Log out</button>
+                                    <button onClick={handleLogOut} className='btn bg-red-600 text-white hover:text-black'>Log out</button>
 
                                 </ul>
                             </div>
@@ -116,7 +147,7 @@ const Nav = () => {
                             <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
                                 <li className='font-bold text-center'>{user?.displayName || "User"}</li>
                                 <Link className='font-semibold text-blue-600 hover:underline text-center  my-3' to="/dashboard">Dashboard</Link>
-                                <button className='btn bg-red-600 text-white hover:text-black'>Log out</button>
+                                <button onClick={handleLogOut} className='btn bg-red-600 text-white hover:text-black'>Log out</button>
 
                             </ul>
                         </div>
