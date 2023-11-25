@@ -7,6 +7,11 @@ import Dashboard from "../layouts/Dashboard";
 import PrivateRoute from "../hooks/private route/PrivateRoute";
 import BookAParcel from "../pages/Dashboard/User/BookAParcel";
 import MyParcels from "../pages/Dashboard/User/MyParcels";
+import UpdateParcel from "../pages/Dashboard/User/UpdateParcel";
+import axios from "axios";
+
+
+
 
 export const router = createBrowserRouter([
     {
@@ -42,6 +47,11 @@ export const router = createBrowserRouter([
             {
                 path: "/dashboard/myParcels",
                 element: <MyParcels />
+            },
+            {
+                path: "/dashboard/updateBooking/:id",
+                element: <UpdateParcel />,
+                loader: ({ params }) => axios.get(`http://localhost:9000/booking/${params.id}`)
             }
         ]
     }
