@@ -2,12 +2,15 @@ import { useForm } from "react-hook-form"
 import DashboardSectionTitle from "../../../components/Section titles/DashboardSectionTitle"
 import { useContext, useEffect, useState } from "react";
 import { UserContext } from "../../../context/AuthProvider";
+import useAxiosSecure from "../../../hooks/axios/useAxiosSecure";
+import Swal from "sweetalert2";
 
 const BookAParcel = () => {
     const {
         register,
         handleSubmit,
         watch,
+        reset,
         formState: { errors },
     } = useForm();
 
@@ -34,16 +37,28 @@ const BookAParcel = () => {
     }, [parcelWeight]);
 
 
+    const axiosSecure = useAxiosSecure();
 
 
-    const onSubmit = (data) => {
+    const onSubmit = async (data) => {
         const newBooking = {
             ...data,
             status: "pending",
             calculatedDeliveryPrice: calculatedPrice,
             bookingDate: new Date().toString()
         }
-        console.log(newBooking)
+
+        const result = await axiosSecure.post("/bookings", newBooking);
+        if (result.data) {
+            reset();
+            Swal.fire({
+                position: "center",
+                icon: "success",
+                text: "Your booking has been placed successfully!",
+                showConfirmButton: false,
+                timer: 1500
+            });
+        }
     }
 
 
@@ -52,7 +67,7 @@ const BookAParcel = () => {
 
         <form onSubmit={handleSubmit(onSubmit)} className="mt-5">
             {/* First row */}
-            <div className="flex items-center gap-6">
+            <div className="flex flex-col md:flex-row items-center gap-6">
                 <div className="form-control w-full ">
                     <label className="label">
                         <span className="label-text font-semibold">Your name*</span>
@@ -71,7 +86,7 @@ const BookAParcel = () => {
             </div>
 
             {/* Second row */}
-            <div className="flex items-center gap-6 mt-3">
+            <div className="flex flex-col md:flex-row items-center gap-6 mt-3">
                 <div className="form-control w-full ">
                     <label className="label">
                         <span className="label-text font-semibold">Your phone number*</span>
@@ -91,7 +106,7 @@ const BookAParcel = () => {
 
 
             {/* Third row */}
-            <div className="flex items-center gap-6 mt-3">
+            <div className="flex flex-col md:flex-row items-center gap-6 mt-3">
                 <div className="form-control w-full ">
                     <label className="label">
                         <span className="label-text font-semibold">Parcel weight *</span>
@@ -110,7 +125,7 @@ const BookAParcel = () => {
             </div>
 
             {/* Fourth row */}
-            <div className="flex items-center gap-6 mt-3">
+            <div className="flex flex-col md:flex-row items-center gap-6 mt-3">
                 <div className="form-control w-full ">
                     <label className="label">
                         <span className="label-text font-semibold">Receiver's phone number *</span>
@@ -130,7 +145,7 @@ const BookAParcel = () => {
 
 
             {/* Fifth row */}
-            <div className="flex items-center gap-6 mt-3">
+            <div className="flex flex-col md:flex-row items-center gap-6 mt-3">
                 <div className="form-control w-full ">
                     <label className="label">
                         <span className="label-text font-semibold">Requested delivery date *</span>
@@ -143,18 +158,18 @@ const BookAParcel = () => {
                     <label className="label">
                         <span className="label-text font-semibold">Delivery address latitude *</span>
                     </label>
-                    <input type="number" placeholder="Delivery address latitude" {...register("deliveryAddressLatitude", { required: true })} className="input input-bordered w-full " />
+                    <input type="text" placeholder="Delivery address latitude" {...register("deliveryAddressLatitude", { required: true })} className="input input-bordered w-full " />
                     {errors.deliveryAddressLatitude?.type === "required" && <p className="text-red-600 font-medium">This field is required</p>}
                 </div>
             </div>
 
             {/* Sixth row */}
-            <div className="flex items-center gap-6 mt-3">
+            <div className="flex flex-col md:flex-row items-center gap-6 mt-3">
                 <div className="form-control w-full ">
                     <label className="label">
                         <span className="label-text font-semibold">Delivery address longitude *</span>
                     </label>
-                    <input type="number" placeholder="Delivery address longitude" {...register("deliveryAddressLongitude", { required: true })} className="input input-bordered w-full " />
+                    <input type="text" placeholder="Delivery address longitude" {...register("deliveryAddressLongitude", { required: true })} className="input input-bordered w-full " />
                     {errors.deliveryAddressLongitude?.type === "required" && <p className="text-red-600 font-medium">This field is required</p>}
                 </div>
 

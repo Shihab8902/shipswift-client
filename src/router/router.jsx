@@ -6,6 +6,7 @@ import Register from "../pages/Register/Register";
 import Dashboard from "../layouts/Dashboard";
 import PrivateRoute from "../hooks/private route/PrivateRoute";
 import BookAParcel from "../pages/Dashboard/User/BookAParcel";
+import MyParcels from "../pages/Dashboard/User/MyParcels";
 
 export const router = createBrowserRouter([
     {
@@ -37,6 +38,10 @@ export const router = createBrowserRouter([
             {
                 path: "/dashboard/book-a-parcel",
                 element: <BookAParcel />
+            },
+            {
+                path: "/dashboard/myParcels",
+                element: <MyParcels />
             }
         ]
     }

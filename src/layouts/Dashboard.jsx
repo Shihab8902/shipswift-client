@@ -26,7 +26,7 @@ const Dashboard = () => {
             user && userType === "user" && <>
                 <NavLink to="/" className="text-white font-medium uppercase  mb-5 p-4 flex items-center gap-2"> <FaUserLarge className="text-2xl" /> My Profile</NavLink>
                 <NavLink to="/dashboard/book-a-parcel" className="text-white font-medium flex items-center gap-2  uppercase mb-5 p-4"><FaClipboardList className="text-2xl" /> Book a parcel</NavLink>
-                <NavLink to="/" className="text-white font-medium uppercase  mb-5 p-4 flex items-center gap-2"> <FaListCheck className="text-2xl" /> My parcels</NavLink>
+                <NavLink to="/dashboard/myParcels" className="text-white font-medium uppercase  mb-5 p-4 flex items-center gap-2"> <FaListCheck className="text-2xl" /> My parcels</NavLink>
             </>
 
         }
