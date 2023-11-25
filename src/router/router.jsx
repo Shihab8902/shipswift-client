@@ -3,6 +3,9 @@ import Root from "../layouts/Root";
 import Home from "../pages/Home/Home";
 import Login from "../pages/Login/Login";
 import Register from "../pages/Register/Register";
+import Dashboard from "../layouts/Dashboard";
+import PrivateRoute from "../hooks/private route/PrivateRoute";
+import BookAParcel from "../pages/Dashboard/User/BookAParcel";
 
 export const router = createBrowserRouter([
     {
@@ -21,6 +24,19 @@ export const router = createBrowserRouter([
             {
                 path: "/register",
                 element: <Register />
+            }
+        ]
+    },
+    {
+        path: "/dashboard",
+        element: <PrivateRoute>
+            <Dashboard />
+        </PrivateRoute>,
+        errorElement: <h3>This page does not exist</h3>,
+        children: [
+            {
+                path: "/dashboard/book-a-parcel",
+                element: <BookAParcel />
             }
         ]
     }
