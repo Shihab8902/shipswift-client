@@ -7,6 +7,7 @@ import { AiOutlineLock } from 'react-icons/ai';
 import { AiOutlineEyeInvisible } from 'react-icons/ai';
 import { AiOutlineEye } from 'react-icons/ai';
 import { AiOutlineUser } from 'react-icons/ai';
+import { FaPhoneAlt } from "react-icons/fa";
 
 import { useForm } from "react-hook-form";
 import { UserContext } from '../../context/AuthProvider';
@@ -46,7 +47,8 @@ const Register = () => {
                         updateProfile(res.user, {
                             displayName: data.name,
                             photoURL: photoURL,
-                            role: data.role
+                            role: data.role,
+                            phone: data.phone
                         })
                             .then(() => {
 
@@ -54,7 +56,8 @@ const Register = () => {
                                     name: data.name,
                                     email: data.email,
                                     role: data.role,
-                                    image: photoURL
+                                    image: photoURL,
+                                    phone: data.phone
                                 };
 
                                 axiosPublic.post("/users", user)
@@ -121,6 +124,12 @@ const Register = () => {
                         <span className=' text-gray-400 text-xl ml-3'> <HiOutlineMail /></span>
                         <input className='w-full p-3  outline-none font-semibold rounded-lg placeholder:font-medium' type="email" {...register("email", { required: true })} name="email" id="email" placeholder='Enter email address' />
                         {errors.email?.type === "required" && <p className='text-red-500 font-semibold text-sm absolute left-2 -bottom-5'>Email field is required</p>}
+                    </div>
+
+                    <div className='w-full bg-white border flex items-center relative rounded-lg my-5'>
+                        <span className=' text-gray-400 text-xl ml-3'> <FaPhoneAlt /></span>
+                        <input className='w-full p-3  outline-none font-semibold rounded-lg placeholder:font-medium' type="number" {...register("phone", { required: true })} name="phone" id="phone" placeholder='Enter contact number' />
+                        {errors.phone?.type === "required" && <p className='text-red-500 font-semibold text-sm absolute left-2 -bottom-5'>Email field is required</p>}
                     </div>
 
                     <div className='w-full bg-white border flex items-center relative  my-5'>

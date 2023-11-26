@@ -117,9 +117,9 @@ const AllUsers = () => {
                     <tbody>
                         {
                             users?.map(user => {
-                                return <tr className="my-5 " key={user._id}>
+                                return <tr className="my-5 " key={user.user._id}>
                                     <td className="text-left">{user.user.name}</td>
-                                    <td>{user.phone || "unknown"}</td>
+                                    <td>{user.user.phone || "unknown"}</td>
                                     <td >{user.numberOfParcelBooked}</td>
                                     <td >{user.totalPrice}</td>
                                     <td ><button onClick={() => handleMakeDeliveryMan(user.user.email, user.user.name)} disabled={user.user.role === "admin" || user.user.role === "deliveryMan"} className=" btn text-green-600 bg-transparent ">{<TbTruckDelivery className="text-xl " />}</button></td>

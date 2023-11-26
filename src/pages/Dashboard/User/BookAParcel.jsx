@@ -48,7 +48,8 @@ const BookAParcel = () => {
             ...data,
             status: "pending",
             calculatedDeliveryPrice: calculatedPrice,
-            bookingDate: new Date().toString()
+            bookingDate: new Date().toString(),
+            image: user?.photoURL
         }
 
         const result = await axiosSecure.post("/bookings", newBooking);

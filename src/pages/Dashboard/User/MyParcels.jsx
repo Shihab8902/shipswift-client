@@ -79,6 +79,9 @@ const MyParcels = () => {
     return <div>
         <DashboardSectionTitle heading="My Parcels" subHeading="Keep track all of your parcels at once" />
 
+
+
+
         <div >
 
             {
@@ -97,7 +100,7 @@ const MyParcels = () => {
                     </div>
 
 
-                    <table className="table table-xs mt-10">
+                    <table className="table table-xs mt-10 overflow-hidden">
 
                         <thead>
                             <tr>

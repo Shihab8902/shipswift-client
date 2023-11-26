@@ -42,8 +42,8 @@ const Dashboard = () => {
             user && userType === "admin" && <>
                 <NavLink to="/" className="text-white font-medium uppercase  mb-5 p-4 flex items-center gap-2"> <IoMdStats className="text-2xl" />Statistics</NavLink>
                 <NavLink to="/dashboard/allUsers" className="text-white font-medium flex items-center gap-2  uppercase mb-5 p-4"><FaUsers className="text-2xl" /> All users</NavLink>
-                <NavLink to="/" className="text-white font-medium flex items-center gap-2  uppercase mb-5 p-4"><FaBoxOpen className="text-2xl" /> All parcels</NavLink>
-                <NavLink to="/" className="text-white font-medium flex items-center gap-2  uppercase mb-5 p-4"><CiDeliveryTruck className="text-2xl" /> All delivery men</NavLink>
+                <NavLink to="/dashboard/allParcels" className="text-white font-medium flex items-center gap-2  uppercase mb-5 p-4"><FaBoxOpen className="text-2xl" /> All parcels</NavLink>
+                <NavLink to="/dashboard/deliveryMans" className="text-white font-medium flex items-center gap-2  uppercase mb-5 p-4"><CiDeliveryTruck className="text-2xl" /> All delivery men</NavLink>
             </>
         }
 

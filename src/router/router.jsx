@@ -14,6 +14,8 @@ import PaymentSuccess from "../pages/Dashboard/User/PaymentSuccess";
 import UserProfile from "../pages/Dashboard/User/UserProfile";
 import AllUsers from "../pages/Dashboard/admin/AllUsers";
 import AdminRoute from "../hooks/admin route/AdminRoute";
+import AllDeliveryMan from "../pages/Dashboard/admin/AllDeliveryMan";
+import AllParcels from "../pages/Dashboard/admin/AllParcels";
 
 
 
@@ -76,6 +78,18 @@ export const router = createBrowserRouter([
                 path: "/dashboard/allUsers",
                 element: <AdminRoute>
                     <AllUsers />
+                </AdminRoute>
+            },
+            {
+                path: "/dashboard/deliveryMans",
+                element: <AdminRoute>
+                    <AllDeliveryMan />
+                </AdminRoute>
+            },
+            {
+                path: "/dashboard/allParcels",
+                element: <AdminRoute>
+                    <AllParcels />
                 </AdminRoute>
             }
 
