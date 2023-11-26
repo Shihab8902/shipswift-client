@@ -9,6 +9,8 @@ import BookAParcel from "../pages/Dashboard/User/BookAParcel";
 import MyParcels from "../pages/Dashboard/User/MyParcels";
 import UpdateParcel from "../pages/Dashboard/User/UpdateParcel";
 import axios from "axios";
+import Payment from "../pages/Dashboard/User/Payment";
+import PaymentSuccess from "../pages/Dashboard/User/PaymentSuccess";
 
 
 
@@ -52,7 +54,15 @@ export const router = createBrowserRouter([
                 path: "/dashboard/updateBooking/:id",
                 element: <UpdateParcel />,
                 loader: ({ params }) => axios.get(`http://localhost:9000/booking/${params.id}`)
+            },
+            {
+                path: "/dashboard/payment",
+                element: <Payment />
             }
         ]
+    },
+    {
+        path: "/dashboard/paymentSuccess",
+        element: <PaymentSuccess />
     }
 ])
