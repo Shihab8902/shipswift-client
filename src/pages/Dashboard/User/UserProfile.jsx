@@ -52,7 +52,7 @@ const UserProfile = () => {
                             Swal.fire({
                                 position: "center",
                                 icon: "success",
-                                text: "Your account has been registered successfully!",
+                                text: "Your profile picture has been updated successfully!",
                                 showConfirmButton: false,
                                 timer: 1500
                             });

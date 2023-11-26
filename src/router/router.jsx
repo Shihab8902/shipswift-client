@@ -12,6 +12,8 @@ import axios from "axios";
 import Payment from "../pages/Dashboard/User/Payment";
 import PaymentSuccess from "../pages/Dashboard/User/PaymentSuccess";
 import UserProfile from "../pages/Dashboard/User/UserProfile";
+import AllUsers from "../pages/Dashboard/admin/AllUsers";
+import AdminRoute from "../hooks/admin route/AdminRoute";
 
 
 
@@ -66,7 +68,17 @@ export const router = createBrowserRouter([
             {
                 path: "/dashboard/userProfile",
                 element: <UserProfile />
+            },
+
+
+            //Admin related routes
+            {
+                path: "/dashboard/allUsers",
+                element: <AdminRoute>
+                    <AllUsers />
+                </AdminRoute>
             }
+
         ]
     },
     {
