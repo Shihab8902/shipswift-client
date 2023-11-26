@@ -7,7 +7,7 @@ const useGetSecure = (queryKey, url) => {
 
     const axiosSecure = useAxiosSecure();
 
-    const { data, isLoading, error } = useQuery({
+    const { data, isLoading, error, refetch } = useQuery({
         queryKey: queryKey,
         queryFn: async () => {
             const result = await axiosSecure.get(url);
@@ -17,7 +17,7 @@ const useGetSecure = (queryKey, url) => {
     });
 
 
-    return { data, isLoading, error };
+    return { data, isLoading, error, refetch };
 
 
 

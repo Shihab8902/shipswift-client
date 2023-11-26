@@ -147,7 +147,7 @@ const Register = () => {
                     </div>
 
                     <div title='Enter profile photo' className='w-full bg-white border flex items-center rounded-lg my-5 relative'>
-                        <input type="file" {...register("photo", { required: true })} accept='image/png, image/jpg, image/jpeg, image/JPEG' className="file-input file-input-bordered file-input-md w-full  outline-none font-semibold rounded-lg " />
+                        <input type="file" {...register("photo", { required: true })} accept="image/*" className="file-input file-input-bordered file-input-md w-full  outline-none font-semibold rounded-lg " />
                         {errors.photo?.type === "required" && <p role="alert" className='text-red-500 font-semibold text-sm absolute left-2 -bottom-5'>Profile photo field is required</p>}
                     </div>
 

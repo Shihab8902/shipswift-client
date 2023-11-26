@@ -7,11 +7,13 @@ import { GiStarsStack } from "react-icons/gi";
 import { AiTwotoneDollar } from "react-icons/ai";
 import { GiCancel } from "react-icons/gi";
 import { Link, useNavigate } from "react-router-dom";
+import useAxiosSecure from "../../../hooks/axios/useAxiosSecure";
+import Swal from "sweetalert2";
 
 const MyParcels = () => {
     const navigate = useNavigate();
     const { user } = useContext(UserContext);
-    const { data } = useGetSecure(["bookings", user?.email], `/booking?email=${user.email}`);
+    const { data, refetch } = useGetSecure(["bookings", user?.email], `/booking?email=${user.email}`);
     const [renderBookings, setRenderBookings] = useState([]);
 
     useEffect(() => {
@@ -32,6 +34,43 @@ const MyParcels = () => {
             setRenderBookings(filtered);
         }
 
+
+    }
+
+    const axiosSecure = useAxiosSecure();
+
+
+
+    const handleBookingCancel = id => {
+
+        Swal.fire({
+            title: "Cancel?",
+            text: "Are you sure want to cancel the booking?",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Confirm"
+        }).then((result) => {
+            if (result.isConfirmed) {
+
+                axiosSecure.put(`/bookings?id=${id}`, { status: "cancelled" })
+                    .then(res => {
+                        if (res.data.modifiedCount > 0) {
+                            refetch();
+
+                            Swal.fire({
+                                position: "center",
+                                icon: "success",
+                                text: "The booking have been cancelled!",
+                                showConfirmButton: false,
+                                timer: 1500
+                            });
+                        }
+                    });
+
+            }
+        });
 
     }
 
@@ -84,12 +123,12 @@ const MyParcels = () => {
                                         <td>{booking.approximateDeliveryDate?.toString().split("T")[0] || "-"}</td>
                                         <td>{booking.bookingDate?.toString().split("T")[0]}</td>
                                         <td>{booking.deliveryManId || "-"}</td>
-                                        <td><button onClick={(() => navigate(`/dashboard/updateBooking/${booking._id}`))} disabled={!booking.status === "pending"} className=" btn text-green-600 bg-transparent ">{<FaEdit className="text-xl " />}</button></td>
-                                        <td><button disabled={booking.status === "delivered"} className=" btn text-orange-600 bg-transparent ">{<GiStarsStack className="text-xl " />}</button></td>
+                                        <td><button onClick={(() => navigate(`/dashboard/updateBooking/${booking._id}`))} disabled={booking.status !== "pending"} className=" btn text-green-600 bg-transparent ">{<FaEdit className="text-xl " />}</button></td>
+                                        <td><button disabled={booking.status !== "delivered"} className=" btn text-orange-600 bg-transparent ">{<GiStarsStack className="text-xl " />}</button></td>
                                         <td>{
                                             payments?.find(payment => payment.paymentId === booking._id) ? <p className="font-medium text-green-700">Paid</p> : <Link to="/dashboard/payment" state={{ totalPrice: booking?.calculatedDeliveryPrice, paymentId: booking?._id }}><button className=" btn text-blue-600 bg-transparent ">{<AiTwotoneDollar className="text-xl " />}</button></Link>
                                         }</td>
-                                        <td><button className=" btn text-red-600 bg-transparent ">{<GiCancel className="text-xl " />}</button></td>
+                                        <td><button disabled={booking.status !== "pending"} onClick={() => handleBookingCancel(booking._id)} className=" btn text-red-600 bg-transparent ">{<GiCancel className="text-xl " />}</button></td>
                                         <td className={`font-medium text-blue-500`}>{booking.status}</td>
                                     </tr>
                                 })

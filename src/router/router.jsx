@@ -11,6 +11,7 @@ import UpdateParcel from "../pages/Dashboard/User/UpdateParcel";
 import axios from "axios";
 import Payment from "../pages/Dashboard/User/Payment";
 import PaymentSuccess from "../pages/Dashboard/User/PaymentSuccess";
+import UserProfile from "../pages/Dashboard/User/UserProfile";
 
 
 
@@ -42,6 +43,9 @@ export const router = createBrowserRouter([
         </PrivateRoute>,
         errorElement: <h3>This page does not exist</h3>,
         children: [
+
+
+            //User related routes
             {
                 path: "/dashboard/book-a-parcel",
                 element: <BookAParcel />
@@ -58,6 +62,10 @@ export const router = createBrowserRouter([
             {
                 path: "/dashboard/payment",
                 element: <Payment />
+            },
+            {
+                path: "/dashboard/userProfile",
+                element: <UserProfile />
             }
         ]
     },

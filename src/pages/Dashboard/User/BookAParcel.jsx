@@ -4,6 +4,7 @@ import { useContext, useEffect, useState } from "react";
 import { UserContext } from "../../../context/AuthProvider";
 import useAxiosSecure from "../../../hooks/axios/useAxiosSecure";
 import Swal from "sweetalert2";
+import { useNavigate } from "react-router-dom";
 
 const BookAParcel = () => {
     const {
@@ -13,6 +14,8 @@ const BookAParcel = () => {
         reset,
         formState: { errors },
     } = useForm();
+
+    const navigate = useNavigate();
 
     const { user } = useContext(UserContext);
     const [calculatedPrice, setCalculatedPrice] = useState(0);
@@ -58,6 +61,7 @@ const BookAParcel = () => {
                 showConfirmButton: false,
                 timer: 1500
             });
+            navigate("/dashboard/myParcels");
         }
     }
 
