@@ -1,6 +1,6 @@
 import { useContext, useState } from 'react'
 import bg from '../../assets/images/login.jpg';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { HiOutlineMail } from 'react-icons/hi';
 import { AiOutlineLock } from 'react-icons/ai';
 import { FcGoogle } from 'react-icons/fc';
@@ -18,6 +18,7 @@ import useAxiosPublic from '../../hooks/axios/useAxiosPublic';
 const Login = () => {
     const [isPasswordVisible, setIsPasswordVisible] = useState(false);
     const navigate = useNavigate();
+    const location = useLocation();
 
     const { register, handleSubmit, formState: { errors } } = useForm();
 
@@ -36,7 +37,7 @@ const Login = () => {
                     showConfirmButton: false,
                     timer: 1500
                 });
-                navigate("/");
+                navigate(location.state ? location.state : "/");
             })
             .catch(error => {
                 Swal.fire({
@@ -61,7 +62,6 @@ const Login = () => {
                         image: result.user.photoURL
                     };
 
-                    console.log(user)
 
                     axiosPublic.post("/users", user)
                         .then(() => {
@@ -73,7 +73,7 @@ const Login = () => {
                                 showConfirmButton: false,
                                 timer: 1500
                             });
-                            navigate("/");
+                            navigate(location.state ? location.state : "/");
                         })
 
 

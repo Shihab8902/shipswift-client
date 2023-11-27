@@ -15,7 +15,6 @@ const TopDeliveryMan = () => {
             .then(res => setTopDeliveryMans(res.data));
     }, []);
 
-    console.log(topDeliveryMans)
 
 
 

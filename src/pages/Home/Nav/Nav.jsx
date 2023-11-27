@@ -8,6 +8,8 @@ import { IoIosNotifications } from "react-icons/io";
 import logo from '../../../assets/images/logo.png';
 import { UserContext } from '../../../context/AuthProvider';
 import Swal from 'sweetalert2';
+import { useQuery } from '@tanstack/react-query';
+import useAxiosSecure from '../../../hooks/axios/useAxiosSecure';
 
 
 
@@ -15,13 +17,12 @@ import Swal from 'sweetalert2';
 
 const Nav = () => {
     const navigate = useNavigate();
-
+    const axiosSecure = useAxiosSecure();
 
     const [isMenuVisible, setIsMenuVisible] = useState(false);
     const [isScrolled, setIsScrolled] = useState(false);
 
-    const { user, logOutUser } = useContext(UserContext);
-
+    const { user, logOutUser, loading } = useContext(UserContext);
 
 
     const handleScroll = () => {
@@ -37,9 +38,27 @@ const Nav = () => {
 
     }, [])
 
+
+    //get current user type
+    const { data: userType } = useQuery({
+        queryKey: ["currentLoginUserRole"],
+        enabled: !loading,
+        queryFn: async () => {
+            const result = await axiosSecure.get(`/user?email=${user?.email}`);
+            return result.data.role;
+        }
+    });
+
+
+
     const navLinks = <>
         <li className='font-semibold text-lg'><NavLink to="/">Home</NavLink></li>
-        <li className='font-semibold text-lg'><NavLink to="/dashboard">Dashboard</NavLink></li>
+        {
+            user && userType === "admin" ? <li className='font-semibold text-lg'><NavLink to="/dashboard/statistics">Dashboard</NavLink></li> :
+                user && userType === "deliveryMan" ? <li className='font-semibold text-lg'><NavLink to="/dashboard/deliveryList">Dashboard</NavLink></li> :
+                    user && userType === "user" ? <li className='font-semibold text-lg'><NavLink to="/dashboard/userProfile">Dashboard</NavLink></li> :
+                        <li className='font-semibold text-lg'><NavLink to="/login">Dashboard</NavLink></li>
+        }
 
 
     </>

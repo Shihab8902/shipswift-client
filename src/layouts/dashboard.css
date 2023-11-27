@@ -1,0 +1,6 @@
+.dashboard-link a.active {
+    background-color: rgb(5, 186, 5);
+    text-decoration: none !important;
+    color: black !important;
+    border-radius: 10px;
+}

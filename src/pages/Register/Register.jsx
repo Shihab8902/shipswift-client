@@ -19,6 +19,7 @@ import { updateProfile } from 'firebase/auth';
 
 const Register = () => {
     const navigate = useNavigate();
+    const location = useLocation();
     const [isPasswordVisible, setIsPasswordVisible] = useState(false);
 
     const { register, handleSubmit, formState: { errors } } = useForm();
@@ -70,7 +71,7 @@ const Register = () => {
                                             showConfirmButton: false,
                                             timer: 1500
                                         });
-                                        navigate("/");
+                                        navigate(location.state ? location.state : "/");
                                         setIsRegistering(false);
                                     })
 

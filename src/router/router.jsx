@@ -19,6 +19,7 @@ import AllParcels from "../pages/Dashboard/admin/AllParcels";
 import DeliveryList from "../pages/Dashboard/delivery man/deliveryList";
 import MyReviews from "../pages/Dashboard/delivery man/MyReviews";
 import Statistics from "../pages/Dashboard/admin/Statistics";
+import Error from "../pages/Error/Error";
 
 
 
@@ -27,7 +28,7 @@ export const router = createBrowserRouter([
     {
         path: "/",
         element: <Root />,
-        errorElement: <h2>404 page not found</h2>,
+        errorElement: <Error />,
         children: [
             {
                 path: "/",
@@ -48,7 +49,7 @@ export const router = createBrowserRouter([
         element: <PrivateRoute>
             <Dashboard />
         </PrivateRoute>,
-        errorElement: <h3>This page does not exist</h3>,
+        errorElement: <Error />,
         children: [
 
 

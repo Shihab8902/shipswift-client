@@ -25,7 +25,7 @@ const Footer = () => {
             <footer className="footer p-10 bg-base-200 text-base-content border-b-2">
                 <nav>
                     <header className="footer-title">Services</header>
-                    <Link className="link link-hover">Air transportation</Link>
+                    <Link className="link link-hover">Air Transportation</Link>
                     <Link className="link link-hover">Ocean Freight</Link>
                     <Link className="link link-hover">Ocean Cargo</Link>
                     <Link className="link link-hover">Logistic</Link>

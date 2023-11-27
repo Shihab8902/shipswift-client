@@ -4,7 +4,7 @@ import { RiMenu3Fill } from "react-icons/ri";
 import { UserContext } from "../context/AuthProvider";
 import { NavLink, Outlet } from "react-router-dom";
 import logo from '../assets/images/logo.png';
-
+import "./dashboard.css"
 import { TbTruckDelivery } from "react-icons/tb";
 import { GiStarsStack } from "react-icons/gi";
 import { IoHome } from "react-icons/io5";
@@ -19,6 +19,7 @@ import { CiDeliveryTruck } from "react-icons/ci";
 const Dashboard = () => {
     const { userType } = useUserType();
     const { user } = useContext(UserContext);
+    console.log(user)
 
 
     const navlinks = <>
@@ -62,7 +63,7 @@ const Dashboard = () => {
             </div>
             <div className="drawer-side">
                 <label htmlFor="my-drawer-2" aria-label="close sidebar" className="drawer-overlay"></label>
-                <ul className="menu p-4 w-80 min-h-full bg-blue-700 text-base-content">
+                <ul className="menu p-4 w-80 min-h-full bg-blue-700 text-base-content dashboard-link">
                     <div className='flex items-center gap-1 mt-5 mb-10'>
                         <img className='w-[30px] md:w-[50px]' src={logo} alt="" />
                         <p className={`text-lg md:text-2xl font-semibold text-white`}>ShipSwift</p>
