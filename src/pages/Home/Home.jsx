@@ -1,3 +1,4 @@
+import Footer from "../../components/footer/Footer"
 import Banner from "./Banner/Banner"
 import Features from "./Features/Features"
 import Nav from "./Nav/Nav"
@@ -14,6 +15,7 @@ const Home = () => {
         <Features />
         <SiteStats />
         <TopDeliveryMan />
+        <Footer />
 
     </section>
 }
