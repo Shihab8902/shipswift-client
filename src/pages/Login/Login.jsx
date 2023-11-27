@@ -61,6 +61,8 @@ const Login = () => {
                         image: result.user.photoURL
                     };
 
+                    console.log(user)
+
                     axiosPublic.post("/users", user)
                         .then(() => {
 

@@ -18,6 +18,7 @@ import AllDeliveryMan from "../pages/Dashboard/admin/AllDeliveryMan";
 import AllParcels from "../pages/Dashboard/admin/AllParcels";
 import DeliveryList from "../pages/Dashboard/delivery man/deliveryList";
 import MyReviews from "../pages/Dashboard/delivery man/MyReviews";
+import Statistics from "../pages/Dashboard/admin/Statistics";
 
 
 
@@ -76,6 +77,10 @@ export const router = createBrowserRouter([
 
 
             //Admin related routes
+            {
+                path: "/dashboard/statistics",
+                element: <Statistics />
+            },
             {
                 path: "/dashboard/allUsers",
                 element: <AdminRoute>
