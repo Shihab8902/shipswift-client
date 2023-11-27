@@ -17,6 +17,7 @@ import AdminRoute from "../hooks/admin route/AdminRoute";
 import AllDeliveryMan from "../pages/Dashboard/admin/AllDeliveryMan";
 import AllParcels from "../pages/Dashboard/admin/AllParcels";
 import DeliveryList from "../pages/Dashboard/delivery man/deliveryList";
+import MyReviews from "../pages/Dashboard/delivery man/MyReviews";
 
 
 
@@ -98,6 +99,10 @@ export const router = createBrowserRouter([
             {
                 path: "/dashboard/deliveryList",
                 element: <DeliveryList />
+            },
+            {
+                path: "/dashboard/myReviews",
+                element: <MyReviews />
             }
 
         ]
