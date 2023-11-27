@@ -5,6 +5,7 @@ import useGetSecure from "../../../hooks/tanstack/useGetSecure"
 import { MdManageHistory } from "react-icons/md";
 import useAxiosSecure from "../../../hooks/axios/useAxiosSecure";
 import Swal from "sweetalert2";
+import { Helmet } from "react-helmet";
 
 const AllParcels = () => {
 
@@ -68,6 +69,11 @@ const AllParcels = () => {
 
 
     return <div>
+        <Helmet>
+            <title>ShipSwift - All parcels</title>
+        </Helmet>
+
+
         <DashboardSectionTitle heading="All Parcels" subHeading="View and manage all parcels" />
 
 

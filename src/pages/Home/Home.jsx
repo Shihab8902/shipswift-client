@@ -1,3 +1,4 @@
+import { Helmet } from "react-helmet"
 import Footer from "../../components/footer/Footer"
 import Banner from "./Banner/Banner"
 import Features from "./Features/Features"
@@ -10,6 +11,11 @@ import TopDeliveryMan from "./Top delivery man/TopDeliveryMan"
 
 const Home = () => {
     return <section>
+        <Helmet>
+            <title>ShipSwift - Home</title>
+        </Helmet>
+
+
         <Nav />
         <Banner />
         <Features />

@@ -5,6 +5,7 @@ import { UserContext } from "../../../context/AuthProvider";
 import useAxiosSecure from "../../../hooks/axios/useAxiosSecure";
 import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
+import { Helmet } from "react-helmet";
 
 const BookAParcel = () => {
     const {
@@ -68,6 +69,10 @@ const BookAParcel = () => {
 
 
     return <div>
+        <Helmet>
+            <title>ShipSwift - Book a parcel</title>
+        </Helmet>
+
         <DashboardSectionTitle heading="Book a parcel" subHeading="Fill out the form to book a parcel" />
 
         <form onSubmit={handleSubmit(onSubmit)} className="mt-5">

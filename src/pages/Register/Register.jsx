@@ -14,6 +14,7 @@ import { UserContext } from '../../context/AuthProvider';
 import Swal from 'sweetalert2';
 import useAxiosPublic from '../../hooks/axios/useAxiosPublic';
 import { updateProfile } from 'firebase/auth';
+import { Helmet } from 'react-helmet';
 
 
 
@@ -100,6 +101,9 @@ const Register = () => {
     return (
         <div className=' flex min-h-screen container mx-auto' >
 
+            <Helmet>
+                <title>ShipSwift - Register</title>
+            </Helmet>
 
 
             <div className='flex-1 hidden lg:block'>

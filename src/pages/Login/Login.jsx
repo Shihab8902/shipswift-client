@@ -12,6 +12,7 @@ import { UserContext } from '../../context/AuthProvider';
 import Swal from 'sweetalert2';
 
 import useAxiosPublic from '../../hooks/axios/useAxiosPublic';
+import { Helmet } from 'react-helmet';
 
 
 
@@ -94,6 +95,10 @@ const Login = () => {
 
 
     return <div className='container mx-auto '>
+
+        <Helmet>
+            <title>ShipSwift - Login</title>
+        </Helmet>
 
         <div className=' flex h-screen '>
 

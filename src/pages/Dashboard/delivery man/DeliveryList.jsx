@@ -10,6 +10,7 @@ import { IoCheckmarkDoneSharp } from "react-icons/io5";
 import { MapContainer, TileLayer, Marker } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
 import Swal from "sweetalert2"
+import { Helmet } from "react-helmet"
 
 const DeliveryList = () => {
     const { user } = useContext(UserContext);
@@ -124,6 +125,11 @@ const DeliveryList = () => {
 
 
     return <div className="container mx-auto">
+
+        <Helmet>
+            <title>ShipSwift - My delivery list</title>
+        </Helmet>
+
         <DashboardSectionTitle heading="My Delivery List" subHeading="View and manage my delivery list" />
 
 

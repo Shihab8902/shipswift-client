@@ -5,6 +5,7 @@ import { updateProfile } from "firebase/auth";
 import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
 import useAxiosPublic from "../../../hooks/axios/useAxiosPublic";
+import { Helmet } from "react-helmet";
 
 
 
@@ -67,6 +68,10 @@ const UserProfile = () => {
     }
 
     return <div>
+
+        <Helmet>
+            <title>ShipSwift - User profile</title>
+        </Helmet>
 
         <div className="flex justify-center ">
             <div className="text-center bg-gray-100 py-10 px-14 rounded-lg">

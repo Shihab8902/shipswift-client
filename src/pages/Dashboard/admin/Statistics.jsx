@@ -1,6 +1,7 @@
 import useGetSecure from "../../../hooks/tanstack/useGetSecure"
 import useGetPublic from "../../../hooks/tanstack/useGetPublic";
 import Chart from 'react-apexcharts';
+import { Helmet } from "react-helmet";
 
 
 const Statistics = () => {
@@ -88,6 +89,10 @@ const Statistics = () => {
 
 
     return <div>
+        <Helmet>
+            <title>ShipSwift - Statistics</title>
+        </Helmet>
+
         <h3 className="text-3xl font-semibold mb-20">Welcome Admin,</h3>
 
         <div className="grid lg:grid-cols-2 gap-6">

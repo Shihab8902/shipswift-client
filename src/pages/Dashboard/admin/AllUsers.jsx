@@ -8,6 +8,7 @@ import { useEffect, useState } from "react";
 import useAxiosPublic from "../../../hooks/axios/useAxiosPublic";
 import useAxiosSecure from "../../../hooks/axios/useAxiosSecure";
 import Swal from "sweetalert2";
+import { Helmet } from "react-helmet";
 
 const AllUsers = () => {
 
@@ -96,7 +97,13 @@ const AllUsers = () => {
 
 
     return <div>
+
+        <Helmet>
+            <title>ShipSwift - All users</title>
+        </Helmet>
+
         <DashboardSectionTitle heading="All users" subHeading="View and  manage all the users" />
+
 
 
         {

@@ -10,6 +10,7 @@ import { Link, useNavigate } from "react-router-dom";
 import useAxiosSecure from "../../../hooks/axios/useAxiosSecure";
 import Swal from "sweetalert2";
 import { useForm } from "react-hook-form";
+import { Helmet } from "react-helmet";
 
 const MyParcels = () => {
     const navigate = useNavigate();
@@ -118,6 +119,12 @@ const MyParcels = () => {
 
 
     return <div>
+
+        <Helmet>
+            <title>ShipSwift - My parcels</title>
+        </Helmet>
+
+
         <DashboardSectionTitle heading="My Parcels" subHeading="Keep track all of your parcels at once" />
 
 

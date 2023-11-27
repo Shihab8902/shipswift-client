@@ -127,7 +127,12 @@ const Nav = () => {
                                 </label>
                                 <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
                                     <li className='font-bold text-center'>{user?.displayName || "User"}</li>
-                                    <Link className='font-semibold text-blue-600 hover:underline text-center  my-3' to="/dashboard">Dashboard</Link>
+                                    {
+                                        user && userType === "admin" ? <li className='font-semibold mx-auto text-primary my-3 hover:underline text-lg'><Link to="/dashboard/statistics">Dashboard</Link></li> :
+                                            user && userType === "deliveryMan" ? <li className='font-semibold mx-auto text-primary my-3 hover:underline text-lg'><Link to="/dashboard/deliveryList">Dashboard</Link></li> :
+                                                user && userType === "user" ? <li className='font-semibold mx-auto text-primary my-3 hover:underline text-lg'><Link to="/dashboard/userProfile">Dashboard</Link></li> :
+                                                    <li className='font-semibold mx-auto text-primary my-3 hover:underline text-lg'><Link to="/login">Dashboard</Link></li>
+                                    }
                                     <button onClick={handleLogOut} className='btn bg-red-600 text-white hover:text-black'>Log out</button>
 
                                 </ul>

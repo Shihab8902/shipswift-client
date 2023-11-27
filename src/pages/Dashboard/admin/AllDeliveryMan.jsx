@@ -1,3 +1,4 @@
+import { Helmet } from "react-helmet";
 import DashboardSectionTitle from "../../../components/Section titles/DashboardSectionTitle"
 import useGetSecure from "../../../hooks/tanstack/useGetSecure"
 
@@ -6,10 +7,15 @@ const AllDeliveryMan = () => {
 
     const { data: deliveryMans = [] } = useGetSecure(["deliveryMans"], `/deliveryMans`);
 
-    console.log(deliveryMans);
+
 
 
     return <div>
+
+        <Helmet>
+            <title>ShipSwift - All delivery man</title>
+        </Helmet>
+
         <DashboardSectionTitle heading="All Delivery Man" subHeading="View and manage all delivery man" />
 
 

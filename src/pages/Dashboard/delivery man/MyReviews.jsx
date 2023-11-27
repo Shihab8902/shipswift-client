@@ -4,15 +4,22 @@ import DashboardSectionTitle from '../../../components/Section titles/DashboardS
 import useGetSecure from '../../../hooks/tanstack/useGetSecure'
 import { UserContext } from '../../../context/AuthProvider'
 import ReviewCard from './ReviewCard'
+import { Helmet } from 'react-helmet'
 
 const MyReviews = () => {
     const { user } = useContext(UserContext);
 
     const { data: reviews = [] } = useGetSecure(["reviews", user?.email], `/review?email=${user?.email}`)
-    console.log(reviews);
+
 
 
     return <div>
+
+        <Helmet>
+            <title>ShipSwift - My Reviews</title>
+        </Helmet>
+
+
         <DashboardSectionTitle heading="My Reviews" subHeading={''} />
 
         {
