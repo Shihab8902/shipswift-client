@@ -1,4 +1,5 @@
 import useGetSecure from "../../../hooks/tanstack/useGetSecure"
+import useGetPublic from "../../../hooks/tanstack/useGetPublic";
 import Chart from 'react-apexcharts';
 
 
@@ -6,7 +7,7 @@ const Statistics = () => {
 
     const { data } = useGetSecure(["bookingStats"], `/admin/bookings`);
 
-    const { data: bookingComp } = useGetSecure(["bookingComp"], "/admin/bookingCount");
+    const { data: bookingComp } = useGetPublic(["bookingComp"], "/admin/bookingCount");
     console.log(bookingComp)
 
 

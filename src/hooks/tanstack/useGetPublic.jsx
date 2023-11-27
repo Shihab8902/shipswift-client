@@ -3,7 +3,7 @@ import useAxiosPublic from "../axios/useAxiosPublic";
 
 
 
-const useGetData = (queryKey, url) => {
+const useGetDataPublic = (queryKey, url) => {
     const axiosPublic = useAxiosPublic();
 
     const { data, isLoading, error } = useQuery({
@@ -23,4 +23,4 @@ const useGetData = (queryKey, url) => {
     };
 };
 
-export default useGetData;
+export default useGetDataPublic;
