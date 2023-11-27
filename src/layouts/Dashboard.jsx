@@ -33,7 +33,7 @@ const Dashboard = () => {
 
         {
             user && userType === "deliveryMan" && <>
-                <NavLink to="/" className="text-white font-medium uppercase  mb-5 p-4 flex items-center gap-2"> <TbTruckDelivery className="text-2xl" /> My delivery list</NavLink>
+                <NavLink to="/dashboard/deliveryList" className="text-white font-medium uppercase  mb-5 p-4 flex items-center gap-2"> <TbTruckDelivery className="text-2xl" /> My delivery list</NavLink>
                 <NavLink to="/" className="text-white font-medium flex items-center gap-2  uppercase mb-5 p-4"><GiStarsStack className="text-2xl" /> My reviews</NavLink>
             </>
         }

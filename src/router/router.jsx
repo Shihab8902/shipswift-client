@@ -16,6 +16,7 @@ import AllUsers from "../pages/Dashboard/admin/AllUsers";
 import AdminRoute from "../hooks/admin route/AdminRoute";
 import AllDeliveryMan from "../pages/Dashboard/admin/AllDeliveryMan";
 import AllParcels from "../pages/Dashboard/admin/AllParcels";
+import DeliveryList from "../pages/Dashboard/delivery man/deliveryList";
 
 
 
@@ -91,6 +92,12 @@ export const router = createBrowserRouter([
                 element: <AdminRoute>
                     <AllParcels />
                 </AdminRoute>
+            },
+
+            //Delivery man routes
+            {
+                path: "/dashboard/deliveryList",
+                element: <DeliveryList />
             }
 
         ]
