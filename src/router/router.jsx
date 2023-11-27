@@ -65,7 +65,7 @@ export const router = createBrowserRouter([
             {
                 path: "/dashboard/updateBooking/:id",
                 element: <UpdateParcel />,
-                loader: ({ params }) => axios.get(`http://localhost:9000/booking/${params.id}`)
+                loader: ({ params }) => axios.get(`https://shipswift-shihab8902.vercel.app/booking/${params.id}`)
             },
             {
                 path: "/dashboard/payment",

@@ -6,7 +6,7 @@ import { UserContext } from '../../context/AuthProvider';
 
 
 export const axiosSecure = axios.create({
-    baseURL: "http://localhost:9000"
+    baseURL: "https://shipswift-shihab8902.vercel.app"
 })
 
 const useAxiosSecure = () => {

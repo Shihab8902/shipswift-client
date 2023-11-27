@@ -44,8 +44,11 @@ const Nav = () => {
         queryKey: ["currentLoginUserRole"],
         enabled: !loading,
         queryFn: async () => {
-            const result = await axiosSecure.get(`/user?email=${user?.email}`);
-            return result.data.role;
+            if (user) {
+                const result = await axiosSecure.get(`/user?email=${user?.email}`);
+                return result.data.role;
+            }
+
         }
     });
 
