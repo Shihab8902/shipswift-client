@@ -1,5 +1,6 @@
 # ShipSwift
 ### Live Site: https://shipswiftbyshihab.netlify.app
+### Server site: https://github.com/Shihab8902/shipswift-server
 
 ----
 ShipSwift is a parcel management app where user can book a parcel for deliver, admin can assign a delivery man and delivery man deliver the parcel.
